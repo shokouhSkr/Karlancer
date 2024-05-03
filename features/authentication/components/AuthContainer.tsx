@@ -1,32 +1,44 @@
 "use client";
 
-import { useState } from "react";
-import { SendOTPForm, CheckOTPForm } from "@/features";
+import { useState, useEffect } from "react";
+import { SendOTPForm, CheckOTPForm, CompleteProfileForm } from "@/features";
 
-const AuthContainer = () => {
-  const [step, setStep] = useState(1);
+type AuthContainerPropType = {
+  setStep: React.Dispatch<React.SetStateAction<number>>;
+};
+
+const AuthContainer = ({ setStep }: AuthContainerPropType) => {
+  const [currentForm, setCurrentForm] = useState(1);
   const [phoneNumber, setPhoneNumber] = useState("");
 
-  const renderStep = () => {
-    switch (step) {
+  useEffect(() => {
+    if (currentForm === 2) setStep(1);
+    if (currentForm === 3) setStep(2);
+  }, [currentForm, setStep]);
+
+  const renderCurrentForm = () => {
+    switch (currentForm) {
       case 1:
         return (
           <SendOTPForm
-            setStep={setStep}
+            setCurrentForm={setCurrentForm}
             phoneNumber={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
           />
         );
 
       case 2:
-        return <CheckOTPForm setStep={setStep} phoneNumber={phoneNumber} />;
+        return <CheckOTPForm setCurrentForm={setCurrentForm} phoneNumber={phoneNumber} />;
+
+      case 3:
+        return <CompleteProfileForm setCurrentForm={setCurrentForm} setStep={setStep} />;
 
       default:
         return null;
     }
   };
 
-  return renderStep();
+  return renderCurrentForm();
 };
 
 export default AuthContainer;

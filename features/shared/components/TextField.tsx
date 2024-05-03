@@ -1,11 +1,25 @@
+"use client";
+
+import { useRef, useEffect } from "react";
+
 type TextFieldPropType = {
   label: string;
   name: string;
-  value: any;
-  onChange: any;
+  value: string;
+  type?: string;
+  shouldAutoFocus?: boolean;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
 };
 
-const TextField = ({ label, name, value, onChange }: TextFieldPropType) => {
+const TextField = ({ label, name, value, type, shouldAutoFocus, onChange }: TextFieldPropType) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
+
   return (
     <div>
       <label htmlFor={name} className="text-sm block">
@@ -13,13 +27,14 @@ const TextField = ({ label, name, value, onChange }: TextFieldPropType) => {
       </label>
 
       <input
-        type="number"
+        type={type || "text"}
         name={name}
         id={name}
         value={value}
         onChange={onChange}
         autoComplete="off"
-        className="textField__input mt-4"
+        className="textField__input mt-2"
+        ref={shouldAutoFocus ? inputRef : null}
       />
     </div>
   );

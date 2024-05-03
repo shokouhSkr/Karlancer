@@ -1,4 +1,6 @@
-const AdminDashboard = () => {
+"use client";
+
+const AdminDashboardPage = () => {
   return (
     <div>
       <h1>
@@ -21,4 +23,4 @@ const AdminDashboard = () => {
   );
 };
 
-export default AdminDashboard;
+export default AdminDashboardPage;

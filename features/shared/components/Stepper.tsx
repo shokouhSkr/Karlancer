@@ -1,5 +1,8 @@
+import { BiCheck } from "react-icons/bi";
+import { toPersianNumbers } from "@/utils/helpers";
+
 const Stepper = ({ thisStep }: { thisStep: number }) => {
-  const steps = ["احراز هویت", "تکمیل اطلاعات", "ثبت سفارش"];
+  const steps = ["احراز هویت", "تکمیل اطلاعات", "ثبت درخواست"];
   const currentStep = 1;
   const complete = false;
 
@@ -14,7 +17,9 @@ const Stepper = ({ thisStep }: { thisStep: number }) => {
                 i + 1 > thisStep && "not-reached"
               }`}
             >
-              <div className="step text-sm">{i + 1}</div>
+              <div className="step text-sm">
+                {i + 1 < thisStep ? <BiCheck className="mb-1 text-lg" /> : toPersianNumbers(i + 1)}
+              </div>
               <p className={`text-sm mt-4 ${i + 1 <= thisStep ? "text-black" : "text-gray-400"}`}>
                 {step}
               </p>
@@ -32,7 +37,9 @@ const Stepper = ({ thisStep }: { thisStep: number }) => {
                 (i + 1 < currentStep || complete) && "complete"
               } ${i + 1 > currentStep && "not-reached"}`}
             >
-              <div className="step text-sm">{i + 1}</div>
+              <div className="step text-sm">
+                {i + 1 < thisStep ? <BiCheck className="mb-1 text-lg" /> : toPersianNumbers(i + 1)}
+              </div>
               <p
                 className={`mt-4 ${
                   i + 1 <= currentStep || complete ? "text-black" : "text-gray-400"

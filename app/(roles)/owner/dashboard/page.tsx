@@ -1,5 +1,5 @@
-const OwnerDashboard = () => {
-  return <div>OwnerDashboard</div>;
+const OwnerDashboardPage = () => {
+  return <div>OwnerDashboardPage</div>;
 };
 
-export default OwnerDashboard;
+export default OwnerDashboardPage;

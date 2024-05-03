@@ -1,5 +1,5 @@
-const FreelancerDashboard = () => {
-  return <div>FreelancerDashboard</div>;
+const FreelancerDashboardPage = () => {
+  return <div>FreelancerDashboardPage</div>;
 };
 
-export default FreelancerDashboard;
+export default FreelancerDashboardPage;

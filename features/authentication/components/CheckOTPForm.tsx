@@ -1,19 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { BiEditAlt, BiArrowBack } from "react-icons/bi";
 import OTPInput from "react-otp-input";
 import { checkOtpApi } from "../services/authServices";
 import toast from "react-hot-toast";
+import { PulseLoader } from "react-spinners";
+import { useRouter } from "next/navigation";
+import { RESET_TIME } from "@/utils/constants";
 
-type SetStepPropType = {
-  setStep: React.Dispatch<React.SetStateAction<number>>;
+type CheckOTPPropType = {
+  setCurrentForm: React.Dispatch<React.SetStateAction<number>>;
   phoneNumber: string;
 };
 
-const CheckOTPForm = ({ setStep, phoneNumber }: SetStepPropType) => {
+const CheckOTPForm = ({ setCurrentForm, phoneNumber }: CheckOTPPropType) => {
   const [otp, setOtp] = useState("");
+  const [time, setTime] = useState(RESET_TIME);
   const {
     mutateAsync: checkOtp,
     isPending: isCheckingOtp,
@@ -22,6 +26,7 @@ const CheckOTPForm = ({ setStep, phoneNumber }: SetStepPropType) => {
   } = useMutation({
     mutationFn: checkOtpApi,
   });
+  const router = useRouter();
 
   const checkOtpHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -31,16 +36,34 @@ const CheckOTPForm = ({ setStep, phoneNumber }: SetStepPropType) => {
     try {
       const data = await checkOtp({ phoneNumber, otp });
       // console.log("data from check otp: ", data);
-      toast.success(data.message);
+
+      const { message, user } = data;
+      if (user.isActive) {
+        if (user.role === "ADMIN") router.push("/admin");
+        if (user.role === "OWNER") router.push("/owner");
+        if (user.role === "FREELANCER") router.push("/freelancer");
+      } else {
+        setCurrentForm(3);
+      }
+
+      toast.success(message);
     } catch (error: any) {
       toast.error(error?.response?.data?.message);
     }
   };
 
+  useEffect(() => {
+    const timer = time > 0 && setInterval(() => setTime((t) => t - 1), 1000);
+
+    return () => {
+      if (timer) clearInterval(timer);
+    };
+  }, [time]);
+
   return (
     <>
       <div className="flex items-center mt-2 mb-6">
-        <button onClick={() => setStep(1)} className="btn-icon-only rotate-180">
+        <button onClick={() => setCurrentForm(1)} className="btn-icon-only rotate-180">
           <BiArrowBack />
         </button>
         <h1 className="text-2xl font-extrabold flex-1 text-center">کارلنس</h1>
@@ -48,7 +71,7 @@ const CheckOTPForm = ({ setStep, phoneNumber }: SetStepPropType) => {
 
       <div className="flex items-center mb-2">
         <p className="text-xs">کد تایید برای شماره موبایل {phoneNumber} ارسال شد.</p>
-        <button className="p-2 text-primary-900 text-lg">
+        <button onClick={() => setCurrentForm(1)} className="p-2 text-primary-900 text-lg">
           <BiEditAlt />
         </button>
       </div>
@@ -72,12 +95,12 @@ const CheckOTPForm = ({ setStep, phoneNumber }: SetStepPropType) => {
             }}
           />
 
-          <div className="text-center">
-            <button className="my-8 text-center text-sm">دریافت مجدد کد تایید</button>
+          <div className="my-8 text-center text-sm">
+            {time ? <p>{time} ثانیه تا ارسال مجدد کد</p> : <button>دریافت مجدد کد تایید</button>}
           </div>
 
           <button type="submit" className="btn btn--primary w-full  py-3">
-            تایید و ادامه
+            {isCheckingOtp ? <PulseLoader color="#fff" size={8} /> : "تایید و ادامه"}
           </button>
         </form>
       </div>
