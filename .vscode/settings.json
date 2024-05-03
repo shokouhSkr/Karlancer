@@ -1,0 +1,8 @@
+{
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#571130",
+    "titleBar.activeBackground": "#7A1843",
+    "titleBar.activeForeground": "#FEFCFD"
+  },
+  "cSpell.words": ["tailwindcss"]
+}
