@@ -4,3 +4,5 @@ export { default as CheckOTPForm } from "./authentication/components/CheckOTPFor
 export { default as CompleteProfileForm } from "./authentication/components/CompleteProfileForm";
 export { default as TextField } from "./shared/components/TextField";
 export { default as RadioButton } from "./shared/components/RadioButton";
+export { default as Header } from "./shared/components/Header";
+export { default as Sidebar } from "./shared/components/Sidebar";

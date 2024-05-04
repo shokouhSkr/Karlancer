@@ -8,7 +8,7 @@ const AuthPage = () => {
   const [step, setStep] = useState(1);
 
   return (
-    <div className="flex h-dvh">
+    <div className="flex h-dvh max-w-screen-2xl mx-auto">
       {/* RIGHT */}
       <div className="h-full w-full container lg:w-[30%] lg:bg-gray-100 flex items-center justify-center lg:justify-end">
         <div className="w-full max-w-sm lg:ml-[-200px] z-20 relative">

@@ -2,6 +2,7 @@ import { NavLink } from "@/types";
 import { HiCollection, HiHome, HiOutlineViewGrid, HiUsers } from "react-icons/hi";
 
 export const RESET_TIME = 90;
+export const BASE_URL = "http://localhost:5000/api";
 
 export const ownerNavLinks: NavLink[] = [
   { title: "داشبورد", path: "/owner/dashboard", icon: <HiHome /> },

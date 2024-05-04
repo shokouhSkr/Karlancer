@@ -1,6 +1,5 @@
 import axios from "axios";
-
-const BASE_URL = "http://localhost:5000/api";
+import { BASE_URL } from "@/utils/constants";
 
 // custom axios
 const customAxios = axios.create({
@@ -16,6 +15,7 @@ customAxios.interceptors.request.use(
 // Create new access token based on refresh token
 customAxios.interceptors.response.use(
   (res) => res,
+
   async (err) => {
     console.log("err.config: ", err.config);
     const originalConfig = err.config;
