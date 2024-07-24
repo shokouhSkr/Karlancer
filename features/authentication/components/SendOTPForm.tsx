@@ -1,66 +1,98 @@
 "use client";
 
-import { TextField } from "@/features";
-import { getOtpApi } from "../services/authServices";
+import { Divider, Loading, TextField } from "@/features";
+import { checkOtpApi } from "../services/authServices";
 import { useMutation } from "@tanstack/react-query";
-import { PulseLoader } from "react-spinners";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 type SendOTPPropType = {
-  setCurrentForm: React.Dispatch<React.SetStateAction<number>>;
-  phoneNumber: string;
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
+	setCurrentForm: React.Dispatch<React.SetStateAction<number>>;
+	phoneNumber: string;
+	onChange: React.ChangeEventHandler<HTMLInputElement>;
+	onSendOtp: any;
+	isSendingOtp: boolean;
 };
 
-const SendOTPForm = ({ setCurrentForm, phoneNumber, onChange }: SendOTPPropType) => {
-  const {
-    mutateAsync: getOtp,
-    isPending: isSendingOtp,
-    data: otpResponse,
-  } = useMutation({
-    mutationFn: getOtpApi,
-  });
+const SendOTPForm = ({ phoneNumber, onChange, onSendOtp, isSendingOtp }: SendOTPPropType) => {
+	const router = useRouter();
 
-  const sendOptHandler = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+	// For sample owner
+	const { mutateAsync: goToOwnerDashboard, isPending: redirectingToDashboardOwner } = useMutation({
+		mutationFn: checkOtpApi,
+	});
 
-    if (!phoneNumber) return;
+	// For sample freelancer
+	const { mutateAsync: goToDashboardFreelancer, isPending: redirectingToDashboardFreelancer } =
+		useMutation({ mutationFn: checkOtpApi });
 
-    try {
-      const data = await getOtp({ phoneNumber });
-      // console.log("otp data: ", data);
-      toast.success(data.message);
-      setCurrentForm(2);
-    } catch (error: any) {
-      toast.error(error?.response?.data?.message);
-      setCurrentForm(2);
-    }
-  };
+	const loginOwner = async () => {
+		try {
+			const data = await goToOwnerDashboard({ phoneNumber: "09129999999", otp: "123456" });
+			router.push("/owner");
 
-  return (
-    <>
-      <h1 className="text-2xl font-extrabold text-center mt-2 mb-6">کارلنس</h1>
-      <p className="font-bold mb-4">ورود | ثبت نام</p>
+			toast.success("کارفرمای عزیز، خوش آمدید (دمو)");
+		} catch (error: any) {
+			toast.error(error?.response?.data?.message);
+		}
+	};
 
-      <div className="py-4">
-        <p className="mb-2 text-sm">سلام!</p>
+	const loginFreelancer = async () => {
+		try {
+			const data = await goToDashboardFreelancer({ phoneNumber: "09128888888", otp: "987654" });
+			router.push("/freelancer");
 
-        <form onSubmit={sendOptHandler}>
-          <TextField
-            label="لطفا شماره موبایل خود را وارد کنید."
-            name="phoneNumber"
-            value={phoneNumber}
-            type="number"
-            onChange={onChange}
-            shouldAutoFocus
-          />
-          <button type="submit" className="btn btn--primary w-full mt-6 py-3">
-            {isSendingOtp ? <PulseLoader color="#fff" size={8} /> : "ارسال کد تایید"}
-          </button>
-        </form>
-      </div>
-    </>
-  );
+			toast.success("فریلنسر عزیز، خوش آمدید (دمو)");
+		} catch (error: any) {
+			toast.error(error?.response?.data?.message);
+		}
+	};
+
+	return (
+		<>
+			<h1 className="text-2xl font-extrabold text-center mt-2 mb-6">کارلنسر</h1>
+			<p className="font-bold mb-4">ورود | ثبت نام</p>
+
+			<div className="py-4">
+				<p className="mb-2 text-sm">سلام!</p>
+
+				<form onSubmit={onSendOtp}>
+					<TextField
+						label="لطفا شماره موبایل خود را وارد کنید."
+						type="number"
+						onChange={onChange}
+						value={phoneNumber}
+						name="phoneNumber"
+						shouldAutoFocus
+					/>
+					<button type="submit" className="btn btn--primary w-full mt-6 py-3">
+						{isSendingOtp ? <Loading size={8} color="#fff" /> : "ارسال کد تایید"}
+					</button>
+
+					<Divider text="یا" />
+
+					<button type="button" onClick={loginOwner} className="btn btn--primary w-full py-3">
+						{redirectingToDashboardOwner ? (
+							<Loading size={8} color="#fff" />
+						) : (
+							"ورود آزمایشی به عنوان کارفرما"
+						)}
+					</button>
+					<button
+						type="button"
+						onClick={loginFreelancer}
+						className="btn btn--primary w-full mt-3 py-3"
+					>
+						{redirectingToDashboardFreelancer ? (
+							<Loading color="#fff" />
+						) : (
+							"ورود آزمایشی به عنوان فریلنسر"
+						)}
+					</button>
+				</form>
+			</div>
+		</>
+	);
 };
 
 export default SendOTPForm;

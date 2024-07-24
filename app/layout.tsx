@@ -13,7 +13,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Providers>
           <div>{children}</div>
-          {/* <div className="container xl:max-w-screen-xl">{children}</div> */}
         </Providers>
       </body>
     </html>
