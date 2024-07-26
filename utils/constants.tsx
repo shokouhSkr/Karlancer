@@ -7,7 +7,7 @@ import {
 } from "react-icons/hi2";
 
 export const BASE_URL = "http://localhost:5000/api";
-export const RESET_TIME = 2;
+export const RESET_TIME = 90;
 
 export const ownerNavLinks: NavLink[] = [
 	{ title: "داشبورد", path: "/owner/dashboard", icon: <HiOutlineHome className="text-xl" /> },

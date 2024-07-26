@@ -6,11 +6,11 @@ import persian_fa from "react-date-object/locales/persian_fa";
 const DatePickerField = ({ label, date, setDate }: DatePickerFieldPropType) => {
 	return (
 		<div>
-			<span className="mb-2 block text-secondary-700">{label}</span>
+			<span className="mb-2 block text-right pr-2 text-secondary-700">{label}</span>
 
 			<DatePicker
 				containerClassName="w-full"
-				inputClass="text-input"
+				inputClass="textField__input"
 				calendarPosition="bottom-center"
 				value={date}
 				onChange={(date) => setDate(date)}

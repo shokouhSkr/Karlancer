@@ -1,12 +1,13 @@
-import { ConfirmDeletePropType } from "@/types";
+import Loading from "@/features/shared/components/Loading";
+import { ProjectDeletePropType } from "@/types";
 
-const ConfirmDelete = ({
+const ProjectDelete = ({
 	resourceName,
 	disabled,
 	onClose,
-	onConfirm,
+	onDelete,
 	isDeleting,
-}: ConfirmDeletePropType) => {
+}: ProjectDeletePropType) => {
 	return (
 		<div>
 			<h2 className="text-base mb-8 text-wrap text-right">
@@ -18,15 +19,15 @@ const ConfirmDelete = ({
 					لغو
 				</button>
 				<button
-					onClick={onConfirm}
+					onClick={onDelete}
 					disabled={disabled}
-					className="btn min-w-20 bg-secondary-0 text-error hover:text-secondary-0 border border-error hover:bg-red-400"
+					className="btn w-20 bg-secondary-0 text-error hover:text-secondary-0 border border-error hover:bg-red-400"
 				>
-					{isDeleting ? "در حال حذف..." : "تایید"}
+					{isDeleting ? <Loading color="#fff" /> : "تایید"}
 				</button>
 			</div>
 		</div>
 	);
 };
 
-export default ConfirmDelete;
+export default ProjectDelete;

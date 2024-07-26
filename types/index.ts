@@ -1,5 +1,5 @@
-import { Dispatch, ReactNode, SetStateAction } from "react";
-import { UseFormRegister, FieldValues, RegisterOptions } from "react-hook-form";
+import { Dispatch, SetStateAction } from "react";
+import { RegisterOptions } from "react-hook-form";
 
 export interface SendOTPPropType {
 	isSendingOTP: boolean;
@@ -41,7 +41,7 @@ export interface TextFieldPropType {
 	type?: string;
 }
 
-export interface RadioInputPropType {
+export interface RadioButtonPropType {
 	label: string;
 	value: string;
 	name: string;
@@ -51,11 +51,11 @@ export interface RadioInputPropType {
 	register: any;
 }
 
-export interface ConfirmDeletePropType {
+export interface ProjectDeletePropType {
 	resourceName: string;
 	disabled: boolean;
 	onClose: () => void;
-	onConfirm: any;
+	onDelete: any;
 	isDeleting: boolean;
 	// onConfirm: (id: string, options: { onSuccess: () => void }) => void;
 }
@@ -74,7 +74,7 @@ export interface DatePickerFieldPropType {
 	setDate: any;
 }
 
-export interface CreateProjectFormPropType {
+export interface ProjectFormPropType {
 	onClose: () => void;
 	projectToEdit?: any;
 }

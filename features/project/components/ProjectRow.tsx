@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import {
-	ConfirmDelete,
-	CreateProjectForm,
+	ProjectDelete,
+	ProjectForm,
 	Modal,
 	ProjectToggleStatus,
 	Table,
@@ -13,13 +13,13 @@ import { HiOutlineEye, HiOutlineTrash } from "react-icons/hi";
 import { persianPriceFormatter } from "@/utils/persianPriceFormatter";
 import { toLocalDateShort } from "@/utils/toLocalDateShort";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
-import { useRemoveProject } from "../hooks/useRemoveProject";
+import { useRemoveOwnerProject } from "../hooks/useRemoveOwnerProject";
 import Link from "next/link";
 
 const ProjectRow = ({ project, index }: { project: any; index: number }) => {
 	const [isEditOpen, setIsEditOpen] = useState<boolean>(false);
 	const [isDeleteOpen, setIsDeleteOpen] = useState<boolean>(false);
-	const { removeProject, isDeleting } = useRemoveProject();
+	const { removeProject, isDeleting } = useRemoveOwnerProject();
 
 	return (
 		<Table.Row key={project._id}>
@@ -55,8 +55,7 @@ const ProjectRow = ({ project, index }: { project: any; index: number }) => {
 							title={`ویرایش ${project.title}`}
 							onClose={() => setIsEditOpen(false)}
 						>
-							{/* <CreateProjectForm projectToEdit={project} onClose={() => setIsEditOpen(false)} /> */}
-							hi
+							<ProjectForm projectToEdit={project} onClose={() => setIsEditOpen(false)} />
 						</Modal>
 					</>
 
@@ -70,12 +69,12 @@ const ProjectRow = ({ project, index }: { project: any; index: number }) => {
 							title={`حذف ${project.title}`}
 							onClose={() => setIsDeleteOpen(false)}
 						>
-							<ConfirmDelete
+							<ProjectDelete
 								resourceName={project.title}
 								onClose={() => setIsDeleteOpen(false)}
-								onConfirm={() =>
+								onDelete={() =>
 									// First argument always is the argument that the function need (like id).
-									// If we need more than one argument, put them in a {}
+									// If we need more than one argument, put them in a {}.
 									removeProject(project._id, {
 										onSuccess: () => setIsDeleteOpen(false),
 									})

@@ -1,90 +1,124 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect } from "react";
 import { Loading, TextField } from "@/features";
-import { BiArrowBack } from "react-icons/bi";
 import { RadioButton } from "@/features";
 import { useMutation } from "@tanstack/react-query";
 import { completeProfileApi } from "../services/authServices";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { HiArrowSmallRight } from "react-icons/hi2";
 
 type CompleteProfilePropType = {
 	setCurrentForm: React.Dispatch<React.SetStateAction<number>>;
 	setStep: React.Dispatch<React.SetStateAction<number>>;
 };
 
+type formValues = {
+	name: string;
+	email: string;
+	role: string;
+};
+
 const CompleteProfileForm = ({ setCurrentForm, setStep }: CompleteProfilePropType) => {
-	const [username, setUsername] = useState("");
-	const [email, setEmail] = useState("");
-	const [role, setRole] = useState("");
-	const router = useRouter();
+	// We don't need states when we use useForm for inputs.
+	// const [name, setName] = useState('')
+	// const [email, setEmail] = useState('')
+	// const [role, setRole] = useState('')
 	const {
-		mutateAsync: completeProfile,
-		isPending: isSubmitting,
-		data,
-	} = useMutation({
+		register,
+		setFocus,
+		handleSubmit,
+		watch,
+		formState: { errors },
+	} = useForm<formValues>();
+
+	const { mutateAsync: completeProfile, isPending: isSubmitting } = useMutation({
 		mutationFn: completeProfileApi,
 	});
 
-	const submitInfoHandler = async (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
+	const router = useRouter();
 
+	const submitInfoHandler = async (data: formValues) => {
 		try {
-			const { user } = await completeProfile({ name: username, email, role });
-			// console.log("user data: ", user);
+			const res = await completeProfile(data);
 
-			if (user.role === "FREELANCER") router.push("/freelancer");
-			if (user.role === "OWNER") router.push("/owner");
+			if (res.user.role === "FREELANCER") router.push("/freelancer");
+			if (res.user.role === "OWNER") router.push("/owner");
 
-			toast.success(data.message);
+			toast.success(res.message);
 			setStep(3);
 		} catch (error: any) {
 			toast.error(error?.response?.data?.message);
 		}
 	};
 
+	useEffect(() => {
+		setFocus("name");
+	}, [setFocus]);
+
 	return (
 		<>
 			<div className="flex items-center mt-2 mb-6">
-				<button onClick={() => setCurrentForm(2)} className="btn-icon-only rotate-180">
-					<BiArrowBack />
+				<button onClick={() => setCurrentForm(2)} className="btn-icon-only size-7">
+					<HiArrowSmallRight />
 				</button>
 				<h1 className="text-2xl font-extrabold flex-1 text-center">کارلنسر</h1>
 			</div>
 
 			<div className="py-4">
-				<form onSubmit={submitInfoHandler} className="space-y-6">
+				<form onSubmit={handleSubmit(submitInfoHandler)} className="space-y-6">
 					<TextField
 						label="نام و نام خانوادگی"
-						name="username"
-						value={username}
-						onChange={(e) => setUsername(e.target.value)}
-						shouldAutoFocus
+						name="name"
+						register={register}
+						error={errors}
+						validationSchema={{
+							required: "نام و نام خانوادگی ضروری است.",
+						}}
 					/>
 					<TextField
 						label="ایمیل"
 						name="email"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
+						register={register}
+						error={errors}
+						validationSchema={{
+							required: "ایمیل ضروری است.",
+							pattern: {
+								value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+								message: "ایمیل نامعتبر است.",
+							},
+						}}
 					/>
 
 					<div className="flex gap-6 my-1">
 						<RadioButton
 							label="کارفرما"
-							value="OWNER"
 							name="role"
-							checked={role === "OWNER"}
-							onChange={(e: any) => setRole(e.target.value)}
+							value="OWNER"
+							register={register}
+							error={errors}
+							watch={watch}
+							validationSchema={{
+								required: "انتخاب نقش ضروری است.",
+							}}
 						/>
 						<RadioButton
 							label="فریلنسر"
-							value="FREELANCER"
 							name="role"
-							checked={role === "FREELANCER"}
-							onChange={(e: any) => setRole(e.target.value)}
+							value="FREELANCER"
+							register={register}
+							error={errors}
+							watch={watch}
+							validationSchema={{
+								required: "انتخاب نقش ضروری است.",
+							}}
 						/>
 					</div>
+					{errors && errors["role"] && (
+						<span className="text-error text-sm">{errors["role"]?.message as string}</span>
+					)}
 
 					<button type="submit" className="btn btn--primary w-full mt-6 py-3">
 						{isSubmitting ? <Loading color="#fff" /> : "ثبت اطلاعات"}

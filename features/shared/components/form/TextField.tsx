@@ -1,41 +1,46 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { UseFormRegister } from "react-hook-form";
 
 type TextFieldPropType = {
 	label: string;
 	name: string;
-	value: string;
+	register: UseFormRegister<any>;
 	type?: string;
-	shouldAutoFocus?: boolean;
-	onChange: React.ChangeEventHandler<HTMLInputElement>;
+	required?: boolean;
+	error?: any;
+	validationSchema?: any;
 };
 
-const TextField = ({ label, name, value, type, shouldAutoFocus, onChange }: TextFieldPropType) => {
-	const inputRef = useRef<HTMLInputElement>(null);
-
-	useEffect(() => {
-		if (inputRef.current) {
-			inputRef.current.focus();
-		}
-	}, []);
-
+const TextField = ({
+	label,
+	type = "text",
+	name,
+	register,
+	required,
+	error,
+	validationSchema,
+}: TextFieldPropType) => {
 	return (
 		<div>
-			<label htmlFor={name} className="text-sm block">
-				{label}
+			<label htmlFor={name} className="text-sm block text-right">
+				{label} {required && <span className="text-error">*</span>}
 			</label>
 
 			<input
-				type={type || "text"}
+				type={type}
 				id={name}
-				name={name}
-				value={value}
-				onChange={onChange}
+				// name={name}
+				// value={value}
+				// onChange={onChange}
+				{...register(name, validationSchema)}
 				autoComplete="off"
 				className="textField__input mt-2"
-				ref={shouldAutoFocus ? inputRef : null}
 			/>
+
+			{error && error[name] && (
+				<span className="text-error text-sm mt-2 text-right block">{error[name]?.message}</span>
+			)}
 		</div>
 	);
 };

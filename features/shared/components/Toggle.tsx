@@ -12,12 +12,12 @@ const Toggle = ({ label, enabled, onChange }: TogglePropType) => {
 	return (
 		<Switch.Group>
 			<div className="flex items-center justify-between gap-2">
-				<Switch.Label className="flex-1 text-center">{label}</Switch.Label>
+				<Switch.Label className="w-7 text-center">{label}</Switch.Label>
 				<Switch
 					checked={enabled}
 					onChange={onChange}
 					className={`${
-						enabled ? "badge--success" : "badge--danger"
+						enabled ? "bg-primary-900" : "bg-primary-200"
 					} relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none`}
 				>
 					<span

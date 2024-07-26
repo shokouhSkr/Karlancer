@@ -7,14 +7,13 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
 type SendOTPPropType = {
-	setCurrentForm: React.Dispatch<React.SetStateAction<number>>;
-	phoneNumber: string;
-	onChange: React.ChangeEventHandler<HTMLInputElement>;
 	onSendOtp: any;
 	isSendingOtp: boolean;
+	register: any;
+	errors: any;
 };
 
-const SendOTPForm = ({ phoneNumber, onChange, onSendOtp, isSendingOtp }: SendOTPPropType) => {
+const SendOTPForm = ({ onSendOtp, isSendingOtp, register, errors }: SendOTPPropType) => {
 	const router = useRouter();
 
 	// For sample owner
@@ -60,10 +59,15 @@ const SendOTPForm = ({ phoneNumber, onChange, onSendOtp, isSendingOtp }: SendOTP
 					<TextField
 						label="لطفا شماره موبایل خود را وارد کنید."
 						type="number"
-						onChange={onChange}
-						value={phoneNumber}
 						name="phoneNumber"
-						shouldAutoFocus
+						register={register}
+						error={errors}
+						validationSchema={{
+							pattern: {
+								value: /^09\d{9}$/,
+								message: "شماره موبایل نامعتبر است.",
+							},
+						}}
 					/>
 					<button type="submit" className="btn btn--primary w-full mt-6 py-3">
 						{isSendingOtp ? <Loading size={8} color="#fff" /> : "ارسال کد تایید"}
