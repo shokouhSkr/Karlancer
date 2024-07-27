@@ -30,3 +30,4 @@ export { default as ProjectRow } from "./project/components/ProjectRow";
 export { default as ProposalsTable } from "./proposal/components/ProposalsTable";
 export { default as ProposalHeader } from "./proposal/components/ProposalHeader";
 export { default as ProposalRow } from "./proposal/components/ProposalRow";
+export { default as ProposalChangeStatus } from "./proposal/components/ProposalChangeStatus";

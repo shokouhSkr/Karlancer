@@ -14,7 +14,7 @@ export interface CheckOTPPropType {
 	otpResponse: any;
 }
 
-export interface ChangeProposalStatusPropType {
+export interface ProposalChangeStatusPropType {
 	proposalId: string;
 	onClose: () => void;
 }

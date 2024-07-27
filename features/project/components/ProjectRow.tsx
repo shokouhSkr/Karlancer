@@ -39,7 +39,7 @@ const ProjectRow = ({ project, index }: { project: any; index: number }) => {
 					))}
 				</div>
 			</td>
-			<td>{project?.freelancer?.name || "-"}</td>
+			{/* <td>{project?.freelancer?.name || "-"}</td> */}
 			<td>
 				<ProjectToggleStatus project={project} />
 			</td>
