@@ -38,19 +38,3 @@ export const adminNavLinks: NavLink[] = [
 		icon: <HiOutlineRectangleStack className="text-xl" />,
 	},
 ];
-
-// status => 0: denied, 1:pending, 2:accepted
-export const statusStyle = [
-	{
-		label: "رد شده",
-		className: "badge--danger",
-	},
-	{
-		label: "در انتظار تایید",
-		className: "badge--secondary",
-	},
-	{
-		label: "تایید شده",
-		className: "badge--success",
-	},
-];

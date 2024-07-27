@@ -30,7 +30,7 @@ const SendOTPForm = ({ onSendOtp, isSendingOtp, register, errors }: SendOTPPropT
 			const data = await goToOwnerDashboard({ phoneNumber: "09129999999", otp: "123456" });
 			router.push("/owner");
 
-			toast.success("کارفرمای عزیز، خوش آمدید (دمو)");
+			toast.success("کارفرمای عزیز، خوش آمدید. (دمو)");
 		} catch (error: any) {
 			toast.error(error?.response?.data?.message);
 		}
@@ -41,7 +41,7 @@ const SendOTPForm = ({ onSendOtp, isSendingOtp, register, errors }: SendOTPPropT
 			const data = await goToDashboardFreelancer({ phoneNumber: "09128888888", otp: "987654" });
 			router.push("/freelancer");
 
-			toast.success("فریلنسر عزیز، خوش آمدید (دمو)");
+			toast.success("فریلنسر عزیز، خوش آمدید. (دمو)");
 		} catch (error: any) {
 			toast.error(error?.response?.data?.message);
 		}

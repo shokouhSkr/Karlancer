@@ -43,7 +43,7 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
 				}}
 			/>
 
-			<ReactQueryDevtools initialIsOpen={false} />
+			{/* <ReactQueryDevtools initialIsOpen={false} /> */}
 		</QueryClientProvider>
 	);
 };

@@ -1,21 +1,19 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { AdminLinks, FreelancerLinks, OwnerLinks } from "@/features";
+import { AdminLinks, FreelancerLinks, Logout, OwnerLinks } from "@/features";
 import {
 	HiOutlineBars3BottomRight,
 	HiOutlineMoon,
 	HiOutlineSun,
 	HiOutlineUser,
 } from "react-icons/hi2";
-import { useUser } from "@/features/authentication/hooks/useUser";
 
 type HeaderPropType = {
 	onOpenSidebar: React.MouseEventHandler<HTMLButtonElement>;
 };
 
 const Header = ({ onOpenSidebar }: HeaderPropType) => {
-	const { user, isLoading } = useUser();
 	const currentPath = usePathname();
 
 	const dynamicHeaderLinks = () => {

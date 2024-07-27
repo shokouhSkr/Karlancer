@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getUserApi } from "../services/authServices";
 
-export const useUser = () => {
+export const useProfileUser = () => {
 	const { data, isLoading } = useQuery({
 		queryKey: ["get-user"],
 		queryFn: getUserApi,
@@ -9,7 +9,7 @@ export const useUser = () => {
 		refetchOnWindowFocus: true,
 	});
 
-	const { user } = data || {};
+	const { user: userProfile } = data || {};
 
-	return { isLoading, user };
+	return { isLoading, userProfile };
 };
