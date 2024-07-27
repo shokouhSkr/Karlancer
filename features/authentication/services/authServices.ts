@@ -19,3 +19,8 @@ export const getUserApi = async () => {
 	const response = await http.get("/user/profile");
 	return response.data.data;
 };
+
+export const logoutApi = async () => {
+	const { data } = await http.post("/user/logout");
+	return data.data;
+};

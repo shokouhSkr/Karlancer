@@ -1,6 +1,7 @@
 export { default as AuthContainer } from "./authentication/components/AuthContainer";
 export { default as SendOTPForm } from "./authentication/components/SendOTPForm";
 export { default as CheckOTPForm } from "./authentication/components/CheckOTPForm";
+export { default as Logout } from "./authentication/components/Logout";
 export { default as CompleteProfileForm } from "./authentication/components/CompleteProfileForm";
 export { default as TextField } from "./shared/components/form/TextField";
 export { default as RadioButton } from "./shared/components/form/RadioButton";
