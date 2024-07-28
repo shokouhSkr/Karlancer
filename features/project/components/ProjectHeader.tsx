@@ -19,7 +19,7 @@ const ProjectHeader = () => {
 				onClick={() => setIsOpen(true)}
 				className="btn btn--primary transition-all duration-200 rounded-lg px-4 py-2 flex items-center gap-1.5"
 			>
-				<HiOutlinePlus className="text-secondary-0 size-5" />
+				<HiOutlinePlus className="text-white size-5" />
 				<span>اضافه کردن پروژه</span>
 			</button>
 		</div>

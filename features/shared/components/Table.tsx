@@ -11,7 +11,7 @@ const Table = ({ children }: { children: React.ReactNode }) => {
 const TableHeader = ({ children }: { children: React.ReactNode }) => {
 	return (
 		<thead>
-			<tr className="bg-slate-200 sticky top-0 z-10">{children}</tr>
+			<tr className="bg-secondary-200 text-secondary-600 sticky top-0 z-10">{children}</tr>
 		</thead>
 	);
 };

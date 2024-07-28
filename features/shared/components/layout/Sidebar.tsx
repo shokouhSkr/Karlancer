@@ -48,7 +48,7 @@ const Sidebar = ({ isSidebarOpen, onClose }: SidebarPropType) => {
 				</ul>
 
 				{/* PROFILE */}
-				<div className="p-4 flex gap-2 mb-4">
+				<div className={`p-4 flex gap-2 mb-4 ${isLoading ? "blur-sm" : ""}`}>
 					{/* PROFILE - IMAGE */}
 					<Image
 						src={"https://avatar.iran.liara.run/public/6"}

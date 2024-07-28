@@ -8,12 +8,14 @@ import {
 	HiOutlineSun,
 	HiOutlineUser,
 } from "react-icons/hi2";
+import { useDarkMode } from "@/context/DarkModeContext";
 
 type HeaderPropType = {
 	onOpenSidebar: React.MouseEventHandler<HTMLButtonElement>;
 };
 
 const Header = ({ onOpenSidebar }: HeaderPropType) => {
+	const { isDarkMode, toggleDarkMode } = useDarkMode();
 	const currentPath = usePathname();
 
 	const dynamicHeaderLinks = () => {
@@ -39,9 +41,8 @@ const Header = ({ onOpenSidebar }: HeaderPropType) => {
 				{/* LEFT */}
 				<div className="flex gap-3 items-center text-slate-500">
 					{/* THEME TOGGLE */}
-					<button className="btn-icon-only size-10">
-						<HiOutlineMoon size={24} />
-						{/* <HiOutlineSun size={24} /> */}
+					<button onClick={toggleDarkMode} className="btn-icon-only size-10">
+						{isDarkMode ? <HiOutlineSun size={24} /> : <HiOutlineMoon size={24} />}
 					</button>
 					{/* USER */}
 					<button className="btn-icon-only size-10">
