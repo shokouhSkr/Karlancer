@@ -49,7 +49,9 @@ export { default as ProjectRow } from "./project/components/ProjectRow";
 export { default as ProjectToggleStatus } from "./project/components/ProjectToggleStatus";
 
 // proposal
-export { default as ProposalsTable } from "./proposal/components/ProposalsTable";
-export { default as ProposalHeader } from "./proposal/components/ProposalHeader";
-export { default as ProposalRow } from "./proposal/components/ProposalRow";
+export { default as OwnerProposalsTable } from "./proposal/components/OwnerProposalsTable";
+export { default as FreelancerProposalsTable } from "./proposal/components/FreelancerProposalsTable";
+export { default as ProposalsHeader } from "./proposal/components/ProposalsHeader";
+export { default as OwnerProposalRow } from "./proposal/components/OwnerProposalRow";
+export { default as FreelancerProposalRow } from "./proposal/components/FreelancerProposalRow";
 export { default as ProposalChangeStatus } from "./proposal/components/ProposalChangeStatus";

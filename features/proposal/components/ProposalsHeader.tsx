@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { HiArrowSmallRight } from "react-icons/hi2";
 
-const ProposalHeader = ({ project }: { project: any }) => {
+const ProposalsHeader = ({ project }: { project: any }) => {
 	const router = useRouter();
 
 	return (
@@ -23,4 +23,4 @@ const ProposalHeader = ({ project }: { project: any }) => {
 	);
 };
 
-export default ProposalHeader;
+export default ProposalsHeader;

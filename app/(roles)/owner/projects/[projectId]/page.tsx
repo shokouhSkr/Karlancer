@@ -1,6 +1,6 @@
 "use client";
 
-import { Loading, ProposalHeader, ProposalsTable } from "@/features";
+import { Loading, ProposalsHeader, OwnerProposalsTable } from "@/features";
 import { useSingleProject } from "@/features/project/hooks/useSingleProject";
 
 const SingleProjectPage = () => {
@@ -15,8 +15,8 @@ const SingleProjectPage = () => {
 
 	return (
 		<div>
-			<ProposalHeader project={project} />
-			<ProposalsTable proposals={project.proposals} />
+			<ProposalsHeader project={project} />
+			<OwnerProposalsTable proposals={project.proposals} />
 		</div>
 	);
 };

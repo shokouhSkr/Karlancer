@@ -1,11 +1,9 @@
-import { Empty, ProposalRow, Table } from "@/features";
+import { Empty, OwnerProposalRow, Table } from "@/features";
 
-const ProposalsTable = ({ proposals }: { proposals: any }) => {
+const OwnerProposalsTable = ({ proposals }: { proposals: any }) => {
 	if (proposals.length === 0) {
 		return <Empty resourceName="درخواستی" />;
 	}
-
-	console.log("proposals: ", proposals);
 
 	return (
 		<Table>
@@ -21,11 +19,11 @@ const ProposalsTable = ({ proposals }: { proposals: any }) => {
 
 			<Table.Body>
 				{proposals.map((proposal: any, index: number) => {
-					return <ProposalRow key={proposal._id} proposal={proposal} index={index} />;
+					return <OwnerProposalRow key={proposal._id} proposal={proposal} index={index} />;
 				})}
 			</Table.Body>
 		</Table>
 	);
 };
 
-export default ProposalsTable;
+export default OwnerProposalsTable;
