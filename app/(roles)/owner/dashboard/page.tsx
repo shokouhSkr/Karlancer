@@ -1,5 +1,14 @@
+"use client";
+
+import { DashboardHeader, OwnerStats } from "@/features";
+
 const OwnerDashboardPage = () => {
-  return <div>OwnerDashboardPage</div>;
+	return (
+		<div>
+			<DashboardHeader />
+			<OwnerStats />
+		</div>
+	);
 };
 
 export default OwnerDashboardPage;

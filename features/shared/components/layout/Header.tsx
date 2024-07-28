@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { AdminLinks, FreelancerLinks, Logout, OwnerLinks } from "@/features";
+import { AdminSidebarLinks, FreelancerSidebarLinks, Logout, OwnerSidebarLinks } from "@/features";
 import {
 	HiOutlineBars3BottomRight,
 	HiOutlineMoon,
@@ -19,9 +19,9 @@ const Header = ({ onOpenSidebar }: HeaderPropType) => {
 	const currentPath = usePathname();
 
 	const dynamicHeaderLinks = () => {
-		if (currentPath.startsWith("/owner")) return <OwnerLinks />;
-		if (currentPath.startsWith("/freelancer")) return <FreelancerLinks />;
-		if (currentPath.startsWith("/admin")) return <AdminLinks />;
+		if (currentPath.startsWith("/owner")) return <OwnerSidebarLinks />;
+		if (currentPath.startsWith("/freelancer")) return <FreelancerSidebarLinks />;
+		if (currentPath.startsWith("/admin")) return <AdminSidebarLinks />;
 
 		return null;
 	};

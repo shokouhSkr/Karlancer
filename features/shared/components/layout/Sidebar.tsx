@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { AdminLinks, FreelancerLinks, Logout, OwnerLinks } from "@/features";
+import { AdminSidebarLinks, FreelancerSidebarLinks, Logout, OwnerSidebarLinks } from "@/features";
 import { useProfileUser } from "@/features/authentication/hooks/useProfileUser";
 import Image from "next/image";
 
@@ -15,9 +15,9 @@ const Sidebar = ({ isSidebarOpen, onClose }: SidebarPropType) => {
 	const currentPath = usePathname();
 
 	const dynamicSidebarLinks = () => {
-		if (currentPath.startsWith("/owner")) return <OwnerLinks onClose={onClose} />;
-		if (currentPath.startsWith("/freelancer")) return <FreelancerLinks onClose={onClose} />;
-		if (currentPath.startsWith("/admin")) return <AdminLinks onClose={onClose} />;
+		if (currentPath.startsWith("/owner")) return <OwnerSidebarLinks onClose={onClose} />;
+		if (currentPath.startsWith("/freelancer")) return <FreelancerSidebarLinks onClose={onClose} />;
+		if (currentPath.startsWith("/admin")) return <AdminSidebarLinks onClose={onClose} />;
 
 		return null;
 	};
