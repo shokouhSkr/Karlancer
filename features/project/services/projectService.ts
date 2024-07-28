@@ -1,5 +1,10 @@
 import http from "@/features/shared/services/httpService";
 
+export const getAllProjectsApi = async (queryStr: string) => {
+	const { data } = await http.get(`/project/list?${queryStr}`);
+	return data.data;
+};
+
 export const getOwnerProjectsApi = async () => {
 	const { data } = await http.get("/project/owner-projects");
 	return data.data;

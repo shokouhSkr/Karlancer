@@ -1,4 +1,4 @@
-import { persianPriceFormatter } from "@/utils/helpers";
+import { persianPriceFormatter } from "@/utils/persianPriceFormatter";
 
 type StatPropType = {
 	title: string;

@@ -11,6 +11,7 @@ export { default as OwnerSidebarLinks } from "./roles/owner/components/OwnerSide
 
 // freelancer
 export { default as FreelancerSidebarLinks } from "./roles/freelancer/components/FreelancerSidebarLinks";
+export { default as FreelancerStats } from "./roles/freelancer/components/FreelancerStats";
 
 // admin
 export { default as AdminSidebarLinks } from "./roles/admin/components/AdminSidebarLinks";
