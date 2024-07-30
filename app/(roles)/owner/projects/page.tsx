@@ -1,10 +1,10 @@
-import { ProjectHeader, ProjectsTable } from "@/features";
+import { OwnerProjectsHeader, OwnerProjectsTable } from "@/features";
 
 const ProjectsPage = () => {
 	return (
 		<div>
-			<ProjectHeader />
-			<ProjectsTable />
+			<OwnerProjectsHeader />
+			<OwnerProjectsTable />
 		</div>
 	);
 };

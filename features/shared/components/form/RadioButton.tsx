@@ -1,4 +1,14 @@
-import { RadioButtonPropType } from "@/types";
+import { RegisterOptions } from "react-hook-form";
+
+interface RadioButtonPropType {
+	label: string;
+	value: string;
+	name: string;
+	error: any;
+	watch: any;
+	validationSchema?: RegisterOptions;
+	register: any;
+}
 
 const RadioButton = ({
 	label,

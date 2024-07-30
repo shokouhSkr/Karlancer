@@ -3,7 +3,22 @@
 import { useState } from "react";
 import { Modal, ProposalChangeStatus, Table, TooltipTruncatedText } from "@/features";
 import { persianPriceFormatter } from "@/utils/helpers";
-import { statusStyle } from "@/utils/constants";
+
+// proposal.status => 0: denied, 1:pending, 2:accepted
+export const statusStyle = [
+	{
+		label: "رد شده",
+		className: "badge--danger",
+	},
+	{
+		label: "در انتظار تایید",
+		className: "badge--secondary",
+	},
+	{
+		label: "تایید شده",
+		className: "badge--success",
+	},
+];
 
 const OwnerProposalRow = ({ proposal, index }: { proposal: any; index: number }) => {
 	const [isModalOpen, setIsModalOpen] = useState(false);

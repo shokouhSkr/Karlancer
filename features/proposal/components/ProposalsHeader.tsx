@@ -16,7 +16,7 @@ const ProposalsHeader = ({ project }: { project: any }) => {
 					<HiArrowSmallRight className="md:size-5" />
 				</button>
 			</div>
-			<h1 className="font-semibold text-secondary-700 md:text-xl">
+			<h1 className="font-bold text-xl text-secondary-700 md:text-2xl">
 				لیست درخواست های {project.title}
 			</h1>
 		</div>

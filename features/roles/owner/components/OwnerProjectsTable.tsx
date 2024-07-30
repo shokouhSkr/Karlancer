@@ -1,9 +1,9 @@
 "use client";
 
-import { Empty, Loading, ProjectRow, Table } from "@/features";
-import { useOwnerProjects } from "../hooks/useOwnerProjects";
+import { Empty, Loading, OwnerProjectRow, Table } from "@/features";
+import { useOwnerProjects } from "../../../project/hooks/useOwnerProjects";
 
-const ProjectsTable = () => {
+const OwnerProjectsTable = () => {
 	const { projects, isLoading } = useOwnerProjects();
 
 	if (isLoading)
@@ -34,11 +34,11 @@ const ProjectsTable = () => {
 
 			<Table.Body>
 				{projects.map((project: any, index: number) => (
-					<ProjectRow key={project._id} project={project} index={index} />
+					<OwnerProjectRow key={project._id} project={project} index={index} />
 				))}
 			</Table.Body>
 		</Table>
 	);
 };
 
-export default ProjectsTable;
+export default OwnerProjectsTable;

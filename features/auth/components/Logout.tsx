@@ -4,7 +4,7 @@ import { HiOutlineArrowRightOnRectangle } from "react-icons/hi2";
 import { useLogoutUser } from "../hooks/useLogoutUser";
 
 const Logout = () => {
-	const { isPending, logout } = useLogoutUser();
+	const { logout } = useLogoutUser();
 
 	return (
 		<button

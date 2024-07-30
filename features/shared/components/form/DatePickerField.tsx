@@ -1,7 +1,12 @@
-import { DatePickerFieldPropType } from "@/types";
 import DatePicker from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
+
+interface DatePickerFieldPropType {
+	label: string;
+	date: Date;
+	setDate: any;
+}
 
 const DatePickerField = ({ label, date, setDate }: DatePickerFieldPropType) => {
 	return (

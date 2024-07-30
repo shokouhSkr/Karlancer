@@ -1,9 +1,7 @@
 "use client";
 
-import { AuthContainer } from "@/features";
-import FAuthContainer from "@/features/authentication/components/FAuthContainer";
-import Stepper from "@/features/shared/components/Stepper";
 import { useState } from "react";
+import { AuthContainer, Stepper } from "@/features";
 
 const AuthPage = () => {
 	const [step, setStep] = useState(1);
@@ -21,7 +19,6 @@ const AuthPage = () => {
 					{/* AUTH FORMS */}
 					<div className="p-8 rounded-2xl w-full max-w-sm lg:bg-white">
 						<AuthContainer setStep={setStep} />
-						{/* <FAuthContainer setStep={setStep} /> */}
 					</div>
 				</div>
 			</div>

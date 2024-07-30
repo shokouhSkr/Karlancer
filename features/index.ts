@@ -1,17 +1,25 @@
 // auth
-export { default as AuthContainer } from "./authentication/components/AuthContainer";
-export { default as SendOTPForm } from "./authentication/components/SendOTPForm";
-export { default as CheckOTPForm } from "./authentication/components/CheckOTPForm";
-export { default as Logout } from "./authentication/components/Logout";
-export { default as CompleteProfileForm } from "./authentication/components/CompleteProfileForm";
+export { default as AuthContainer } from "./auth/components/AuthContainer";
+export { default as SendOTPForm } from "./auth/components/SendOTPForm";
+export { default as CheckOTPForm } from "./auth/components/CheckOTPForm";
+export { default as Logout } from "./auth/components/Logout";
+export { default as CompleteProfileForm } from "./auth/components/CompleteProfileForm";
 
 // owner
 export { default as OwnerStats } from "./roles/owner/components/OwnerStats";
+export { default as OwnerProjectsTable } from "./roles/owner/components/OwnerProjectsTable";
+export { default as OwnerProjectRow } from "./roles/owner/components/OwnerProjectRow";
 export { default as OwnerSidebarLinks } from "./roles/owner/components/OwnerSidebarLinks";
+export { default as OwnerProjectsHeader } from "./roles/owner/components/OwnerProjectsHeader";
 
 // freelancer
+export { default as FilterTabs } from "./roles/freelancer/components/FilterTabs";
+export { default as FilterSelect } from "./roles/freelancer/components/FilterSelect";
+export { default as FreelancerProjectsTable } from "./roles/freelancer/components/FreelancerProjectsTable";
+export { default as FreelancerProjectRow } from "./roles/freelancer/components/FreelancerProjectRow";
 export { default as FreelancerSidebarLinks } from "./roles/freelancer/components/FreelancerSidebarLinks";
 export { default as FreelancerStats } from "./roles/freelancer/components/FreelancerStats";
+export { default as FreelancerProjectsHeader } from "./roles/freelancer/components/FreelancerProjectsHeader";
 
 // admin
 export { default as AdminSidebarLinks } from "./roles/admin/components/AdminSidebarLinks";
@@ -43,15 +51,13 @@ export { default as RadioButton } from "./shared/components/form/RadioButton";
 // project
 export { default as ProjectForm } from "./project/components/ProjectForm";
 export { default as ProjectDelete } from "./project/components/ProjectDelete";
-export { default as ProjectHeader } from "./project/components/ProjectHeader";
-export { default as ProjectsTable } from "./project/components/ProjectsTable";
-export { default as ProjectRow } from "./project/components/ProjectRow";
 export { default as ProjectToggleStatus } from "./project/components/ProjectToggleStatus";
 
 // proposal
-export { default as OwnerProposalsTable } from "./proposal/components/OwnerProposalsTable";
-export { default as FreelancerProposalsTable } from "./proposal/components/FreelancerProposalsTable";
+export { default as OwnerProposalsTable } from "./roles/owner/components/OwnerProposalsTable";
+export { default as FreelancerProposalsTable } from "./roles/freelancer/components/FreelancerProposalsTable";
 export { default as ProposalsHeader } from "./proposal/components/ProposalsHeader";
-export { default as OwnerProposalRow } from "./proposal/components/OwnerProposalRow";
-export { default as FreelancerProposalRow } from "./proposal/components/FreelancerProposalRow";
+export { default as CreateProposalForm } from "./proposal/components/ProposalsHeader";
+export { default as OwnerProposalRow } from "./roles/owner/components/OwnerProposalRow";
+export { default as FreelancerProposalRow } from "./roles/freelancer/components/FreelancerProposalRow";
 export { default as ProposalChangeStatus } from "./proposal/components/ProposalChangeStatus";

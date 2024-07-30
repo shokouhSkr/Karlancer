@@ -1,7 +1,7 @@
 "use client";
 
 import { Empty, FreelancerProposalRow, Loading, Table } from "@/features";
-import { useProposals } from "../hooks/useProposals";
+import { useProposals } from "../../../proposal/hooks/useProposals";
 
 const FreelancerProposalsTable = () => {
 	const { isLoading, proposals } = useProposals();

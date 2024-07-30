@@ -1,5 +1,12 @@
+import { FreelancerProjectsHeader, FreelancerProjectsTable } from "@/features";
+
 const ProjectsPage = () => {
-  return <div>ProjectsPage</div>;
+	return (
+		<div>
+			<FreelancerProjectsHeader />
+			<FreelancerProjectsTable />
+		</div>
+	);
 };
 
 export default ProjectsPage;

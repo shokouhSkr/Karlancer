@@ -13,10 +13,10 @@ import { HiOutlineEye, HiOutlineTrash } from "react-icons/hi";
 import { persianPriceFormatter } from "@/utils/persianPriceFormatter";
 import { toLocalDateShort } from "@/utils/toLocalDateShort";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
-import { useRemoveOwnerProject } from "../hooks/useRemoveOwnerProject";
+import { useRemoveOwnerProject } from "../../../project/hooks/useRemoveOwnerProject";
 import Link from "next/link";
 
-const ProjectRow = ({ project, index }: { project: any; index: number }) => {
+const OwnerProjectRow = ({ project, index }: { project: any; index: number }) => {
 	const [isEditOpen, setIsEditOpen] = useState<boolean>(false);
 	const [isDeleteOpen, setIsDeleteOpen] = useState<boolean>(false);
 	const { removeProject, isDeleting } = useRemoveOwnerProject();
@@ -95,4 +95,4 @@ const ProjectRow = ({ project, index }: { project: any; index: number }) => {
 	);
 };
 
-export default ProjectRow;
+export default OwnerProjectRow;

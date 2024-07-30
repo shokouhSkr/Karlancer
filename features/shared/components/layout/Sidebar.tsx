@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { AdminSidebarLinks, FreelancerSidebarLinks, Logout, OwnerSidebarLinks } from "@/features";
-import { useProfileUser } from "@/features/authentication/hooks/useProfileUser";
+import { useProfileUser } from "@/features/auth/hooks/useProfileUser";
 import Image from "next/image";
 
 type SidebarPropType = {

@@ -24,13 +24,6 @@ export interface ChangeUserStatusPropType {
 	onClose: () => void;
 }
 
-export interface ModalPropType {
-	isOpen: boolean;
-	onClose: () => void;
-	title: string;
-	children: React.ReactNode;
-}
-
 export interface TextFieldPropType {
 	label: string;
 	name: string;
@@ -41,16 +34,6 @@ export interface TextFieldPropType {
 	type?: string;
 }
 
-export interface RadioButtonPropType {
-	label: string;
-	value: string;
-	name: string;
-	error: any;
-	watch: any;
-	validationSchema?: RegisterOptions;
-	register: any;
-}
-
 export interface ProjectDeletePropType {
 	resourceName: string;
 	disabled: boolean;
@@ -58,20 +41,6 @@ export interface ProjectDeletePropType {
 	onDelete: any;
 	isDeleting: boolean;
 	// onConfirm: (id: string, options: { onSuccess: () => void }) => void;
-}
-
-export interface SelectPropType {
-	label: string;
-	name: string;
-	register: any;
-	options: any;
-	required: boolean;
-}
-
-export interface DatePickerFieldPropType {
-	label: string;
-	date: Date;
-	setDate: any;
 }
 
 export interface ProjectFormPropType {
@@ -100,7 +69,7 @@ export interface FilterPropType {
 	filterField: string;
 }
 
-export interface CustomSelectPropType {
+export interface FilterSelectPropType {
 	options: { value: string; label: string }[];
 	value: string;
 	onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;

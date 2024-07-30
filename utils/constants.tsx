@@ -54,3 +54,14 @@ export const statusStyle = [
 		className: "badge--success",
 	},
 ];
+
+export const projectStatus: { [key: string]: { label: string; className: string } } = {
+	OPEN: {
+		label: "باز",
+		className: "badge--success",
+	},
+	CLOSED: {
+		label: "بسته",
+		className: "badge--danger",
+	},
+};

@@ -1,9 +1,15 @@
 "use client";
 
 import { LegacyRef } from "react";
-import { ModalPropType } from "@/types";
 import { HiOutlineX } from "react-icons/hi";
 import useClickOutside from "../hooks/useClickOutside";
+
+interface ModalPropType {
+	isOpen: boolean;
+	onClose: () => void;
+	title: string;
+	children: React.ReactNode;
+}
 
 const Modal = ({ isOpen, onClose, title, children }: ModalPropType) => {
 	const ref = useClickOutside(onClose) as LegacyRef<HTMLDivElement>;

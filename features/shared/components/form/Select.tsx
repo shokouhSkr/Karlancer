@@ -1,4 +1,10 @@
-import { SelectPropType } from "@/types";
+interface SelectPropType {
+	label: string;
+	name: string;
+	register: any;
+	options: any;
+	required: boolean;
+}
 
 const Select = ({ label, name, register, options, required }: SelectPropType) => {
 	return (
