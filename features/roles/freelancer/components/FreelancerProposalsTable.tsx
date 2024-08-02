@@ -9,7 +9,7 @@ const FreelancerProposalsTable = () => {
 	if (isLoading)
 		return (
 			<div className="text-center">
-				<Loading />
+				<Loading size={15} />
 			</div>
 		);
 

@@ -35,7 +35,7 @@ const ProjectForm = ({ onClose, projectToEdit = {} }: ProjectFormPropType) => {
 		};
 	}
 
-	// React-hook-form: register => with this, we don't need to pass onChange, value, onBlur, ... to the form. it does automatically by using "name" attribute. also we don't need useStates.
+	// React-hook-form: register => with this, we don't need to pass onChange, value, onBlur, states, ref, ... to the form. it does automatically by using "name" attribute. also we don't need useStates.
 	const {
 		register,
 		handleSubmit,

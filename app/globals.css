@@ -79,7 +79,7 @@ COLORS
 		@apply px-4 shadow-lg shadow-primary-300 dark:shadow-secondary-200;
 	}
 	.btn-icon-only {
-		@apply rounded-xl grid place-items-center border transition-all duration-300;
+		@apply rounded-xl grid place-items-center border transition-transform duration-300;
 	}
 
 	/* STEPPER */
@@ -154,6 +154,20 @@ body {
 	margin: 0;
 }
 
+/* SCROLLBAR */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: rgba(var(--color-secondary-300)) rgba(var(--color-secondary-100));
+}
+*::-webkit-scrollbar-track {
+	background: rgba(var(--color-secondary-600));
+}
+*::-webkit-scrollbar-thumb {
+	background-color: rgba(var(--color-secondary-300));
+	border-radius: 100vh;
+	border: 3px solid rgba(var(--color-secondary-400));
+}
+
 button {
 	cursor: pointer;
 	outline: none;
@@ -217,15 +231,27 @@ table td {
 
 /* React tag component input styles */
 .rti--container {
-	background-color: rgb(var(--color-secondary-200));
-	color: rgb(var(--color-secondary-800));
+	background-color: rgb(var(--color-secondary-100)) !important;
+	color: rgb(var(--color-secondary-800)) !important;
 	padding: 0.6rem 1rem !important;
 	border-radius: 0.8rem !important;
+	border: 1px solid rgb(var(--color-secondary-100)) !important;
+}
+.rti--container:hover {
+	border: 1px solid rgb(var(--color-primary-500)) !important;
+}
+.rti--container:focus {
+	border: 1px solid rgb(var(--color-primary-500)) !important;
 }
 .rti--input {
-	background-color: rgb(var(--color-secondary-100));
+	background-color: rgb(var(--color-secondary-0)) !important;
+	color: rgb(var(--color-secondary-900)) !important;
 	border-radius: 0.4rem !important;
-	padding: 0.2rem !important;
+	padding: 0.2rem 0.5rem !important;
+}
+.rti--tag {
+	color: rgb(var(--color-secondary-700)) !important;
+	background-color: rgb(var(--color-secondary-0)) !important;
 }
 
 /* Input number styles */

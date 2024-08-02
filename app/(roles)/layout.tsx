@@ -7,11 +7,15 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
 	return (
-		<div className="grid h-dvh grid-rows-[auto_1fr] grid-cols-[15rem_1fr]">
+		<div className="grid h-dvh grid-rows-[auto_1fr] grid-cols-[256px_1fr]">
 			<Header onOpenSidebar={() => setIsSidebarOpen(true)} />
 
-			<div className="bg-secondary-100 col-span-full py-8 px-4 md:px-8 overflow-y-auto">
-				<div className="mx-auto max-w-screen-xl flex flex-col gap-12">{children}</div>
+			<div className="col-span-full bg-secondary-0 lg:col-start-2 overflow-y-auto">
+				<div className="mx-auto max-w-screen-xl flex flex-col gap-12">
+					<div className="bg-secondary-100 rounded-tr-3xl min-h-[calc(100dvh-70px)] py-8 px-4 md:px-8">
+						{children}
+					</div>
+				</div>
 			</div>
 
 			<Sidebar isSidebarOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />

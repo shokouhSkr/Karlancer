@@ -8,7 +8,7 @@ const OwnerStats = () => {
 	if (isLoading)
 		return (
 			<div className="flex justify-center">
-				<Loading />
+				<Loading size={15} />
 			</div>
 		);
 

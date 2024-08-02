@@ -35,11 +35,11 @@ const Sidebar = ({ isSidebarOpen, onClose }: SidebarPropType) => {
 			{/* OVERLAY */}
 			<aside
 				className={`${
-					isSidebarOpen ? "translate-x-0" : "translate-x-80"
-				} fixed right-0 top-0 bottom-0 z-50 w-64 bg-secondary-0 shadow-lg transition-transform duration-300 lg:hidden flex flex-col overflow-y-auto`}
+					isSidebarOpen ? "translate-x-0" : "translate-x-64"
+				} fixed right-0 top-0 bottom-0 z-50 w-64 bg-secondary-0 transition-transform duration-300 lg:translate-x-0 lg:transition-none overflow-y-auto flex flex-col`}
 			>
 				{/* LOGO */}
-				<span className="bg-purple-100 p-6">کارلنسر</span>
+				<span className="p-6">کارلنسر</span>
 
 				{/* NAVIGATION LINKS */}
 				<ul className="relative p-6 flex-1">
