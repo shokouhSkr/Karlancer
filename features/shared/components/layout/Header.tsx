@@ -1,6 +1,5 @@
 "use client";
 
-
 import {
 	HiOutlineBars3BottomRight,
 	HiOutlineMoon,
@@ -24,7 +23,7 @@ const Header = ({ onOpenSidebar }: HeaderPropType) => {
 					<button onClick={onOpenSidebar} className="lg:hidden">
 						<HiOutlineBars3BottomRight className="text-3xl p-1" />
 					</button>
-					<span className="ml-4 font-bold">کارلنسر</span>
+					{/* <span className="ml-4 font-bold">کارچین</span> */}
 				</div>
 
 				{/* LEFT */}

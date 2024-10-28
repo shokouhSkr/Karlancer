@@ -31,7 +31,7 @@ const AuthPage = () => {
 						<Stepper thisStep={step} />
 					</div>
 					<p className="text-2xl font-bold text-center">
-						جامع‌ترین پل ارتباطی بین کارفرمایان و فریلنسرها
+						پل میان فریلنسرهای متخصص و کارفرمایان جویای مهارت
 					</p>
 				</div>
 			</div>

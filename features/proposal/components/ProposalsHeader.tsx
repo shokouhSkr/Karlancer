@@ -9,10 +9,7 @@ const ProposalsHeader = ({ project }: { project: any }) => {
 	return (
 		<div className="flex items-center gap-4 mb-8">
 			<div>
-				<button
-					onClick={() => router.back()}
-					className="btn-icon-only size-7 md:size-9 bg-secondary-0 rounded-lg"
-				>
+				<button onClick={() => router.back()} className="btn-icon-only size-7 md:size-9 rounded-lg">
 					<HiArrowSmallRight className="md:size-5" />
 				</button>
 			</div>

@@ -20,11 +20,11 @@ const NavLink = ({ title, path, icon, onClose }: NavLinkPropType) => {
 		<li key={title} onClick={onClose} className="text-lg">
 			<Link
 				href={path}
-				className={`flex items-center gap-2 rounded-md py-2 px-4 transition-all duration-200 hover:text-primary-900 ${
-					isActive ? "text-primary-900" : "text-slate-500"
+				className={`flex items-center gap-2 rounded-xl py-2 px-4 transition-all duration-200 hover:text-primary-900 ${
+					isActive ? "text-primary-900 bg-secondary-100" : "text-slate-500"
 				}`}
 			>
-				{isActive && (
+				{/* {isActive && (
 					<Image
 						src="https://fronthooks.ir/images/indicator.svg"
 						alt=""
@@ -32,7 +32,7 @@ const NavLink = ({ title, path, icon, onClose }: NavLinkPropType) => {
 						height={16}
 						className="fixed right-0 lg:hidden"
 					/>
-				)}
+				)} */}
 				{icon}
 				<span>{title}</span>
 			</Link>

@@ -58,7 +58,7 @@ const CheckOTPForm = ({ setCurrentForm, phoneNumber, onResendOtp }: CheckOTPProp
 				<button onClick={() => setCurrentForm(1)} className="btn-icon-only size-7 rounded-lg">
 					<HiArrowSmallRight />
 				</button>
-				<h1 className="text-2xl font-extrabold flex-1 text-center">کارلنسر</h1>
+				<h1 className="text-2xl font-extrabold flex-1 text-center">کارچین</h1>
 			</div>
 
 			<div className="flex items-center mb-2">

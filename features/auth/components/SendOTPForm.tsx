@@ -49,7 +49,7 @@ const SendOTPForm = ({ onSendOtp, isSendingOtp, register, errors }: SendOTPPropT
 
 	return (
 		<>
-			<h1 className="text-2xl font-extrabold text-center mt-2 mb-6">کارلنسر</h1>
+			<h1 className="text-2xl font-extrabold text-center mt-2 mb-6">کارچین</h1>
 			<p className="font-bold mb-4">ورود | ثبت نام</p>
 
 			<div className="py-4">
